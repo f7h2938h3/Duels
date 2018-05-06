@@ -371,7 +371,7 @@ public class DuelManager implements Listener {
         Location from = event.getFrom();
         Location to = event.getTo();
 
-        if (!config.isPatchesStrictTeleportation() && from.getWorld().equals(to.getWorld()) && from.distance(to) < 1.0) {
+        if (!config.isPatchesStrictTeleportation() && from.getWorld().equals(to.getWorld()) && from.distance(to) < 6.0) {
             return;
         }
 
