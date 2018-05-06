@@ -368,10 +368,9 @@ public class DuelManager implements Listener {
     @EventHandler (priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void on(PlayerTeleportEvent event) {
         Player base = event.getPlayer();
-        Location from = event.getFrom();
         Location to = event.getTo();
 
-        if (!config.isPatchesStrictTeleportation() && from.getWorld().equals(to.getWorld()) && from.distance(to) < 6.0) {
+        if (!config.isPatchesStrictTeleportation()) {
             return;
         }
 
