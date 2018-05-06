@@ -4,4 +4,5 @@
 *.iml
 target/
 /jars
+/lib
 /*.yml
