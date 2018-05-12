@@ -195,7 +195,7 @@ public class SpectatorManager implements Listener {
     public void on(PlayerTeleportEvent event) {
         Player player = event.getPlayer();
 
-        if (!isSpectating(player)) {
+        if (!isSpectating(player) || event.getCause() == PlayerTeleportEvent.TeleportCause.UNKNOWN) {
             return;
         }
 
