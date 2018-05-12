@@ -281,11 +281,17 @@ public class SpectatorManager implements Listener {
         }
 
         spectators.remove(spectator);
+        player.teleport(spectator.getBase());
+        hook.setBackLocation(player, spectator.getBase());
         Helper.reset(player, false);
         player.setFlying(false);
         player.setAllowFlight(false);
-        player.teleport(spectator.getBase());
-        hook.setBackLocation(player, spectator.getBase());
+        PlayerData data = playerManager.getData(player);
+
+        if (data != null) {
+            data.restore(player, !config.isSpectatingRequiresClearedInventory());
+            playerManager.removeData(player);
+        }
     }
 
     // Listen to any type of inventory interaction
