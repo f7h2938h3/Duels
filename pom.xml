@@ -67,10 +67,6 @@
             <id>drtshock-repo</id>
             <url>http://ci.drtshock.net/plugin/repository/everything/</url>
         </repository>
-        <repository>
-            <id>minelink-repo</id>
-            <url>http://repo.minelink.net/content/repositories/public/</url>
-        </repository>
     </repositories>
 
     <dependencies>
