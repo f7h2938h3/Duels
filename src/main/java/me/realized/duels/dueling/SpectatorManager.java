@@ -262,18 +262,30 @@ public class SpectatorManager implements Listener {
     @EventHandler
     public void on(PlayerQuitEvent event) {
         Player base = event.getPlayer();
-        Spectator spectator = getByPlayer(base);
+        resetSpectator(base);
+    }
 
-       if (spectator == null) {
+    // Listen to spectator being kicked, set back to starting location
+    @EventHandler
+    public void on(PlayerKickEvent event) {
+        Player base = event.getPlayer();
+        resetSpectator(base);
+    }
+
+    // Handle resetting the spectator's features
+    private void resetSpectator(Player player) {
+        Spectator spectator = getByPlayer(player);
+
+        if (spectator == null) {
             return;
         }
 
         spectators.remove(spectator);
-        Helper.reset(base, false);
-        base.setFlying(false);
-        base.setAllowFlight(false);
-        base.teleport(spectator.getBase());
-        hook.setBackLocation(base, spectator.getBase());
+        Helper.reset(player, false);
+        player.setFlying(false);
+        player.setAllowFlight(false);
+        player.teleport(spectator.getBase());
+        hook.setBackLocation(player, spectator.getBase());
     }
 
     // Listen to any type of inventory interaction
